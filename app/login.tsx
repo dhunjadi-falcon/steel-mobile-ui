@@ -76,6 +76,7 @@ export default function LoginScreen() {
             style={styles.logo}
           />
           <TextInput
+            testID="textInput"
             mode="flat"
             placeholder="Korisničko ime ili Email"
             textColor="white"
@@ -85,6 +86,7 @@ export default function LoginScreen() {
             contentStyle={{ backgroundColor: theme.colors.background }}
           />
           <TextInput
+            testID="textInput"
             mode="flat"
             placeholder="Lozinka"
             underlineColor={theme.colors.outline}

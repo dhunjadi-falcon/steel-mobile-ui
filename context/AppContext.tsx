@@ -1,11 +1,5 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useReducer,
-} from "react";
+/* import AsyncStorage from "@react-native-async-storage/async-storage"; */
+import React, { createContext, useContext, useMemo, useReducer } from "react";
 
 export interface ContextState {
   isDarkThemeOn: boolean;
@@ -56,7 +50,7 @@ export function AppContextProvider({
 }) {
   const [state, dispatch] = useReducer(FormReducer, initialAppContextState);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const loadState = async () => {
       const storedState = await AsyncStorage.getItem("AppState");
 
@@ -75,7 +69,7 @@ export function AppContextProvider({
 
   useEffect(() => {
     AsyncStorage.setItem("AppState", JSON.stringify(state));
-  }, [state]);
+  }, [state]); */
 
   const AppContextObj = useMemo(
     () => ({
