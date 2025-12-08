@@ -23,9 +23,12 @@ const RootLayoutContent = () => {
     colors: {
       ...MD3LightTheme.colors,
       primary: "#00b4d8",
+      primaryContainer: "#e4e5f1",
       background: "#fafafa",
       outline: "#00b4d8",
       onBackground: "#252526",
+      errorContainer: "#ff0e0e",
+      onErrorContainer: "#ff3e3e",
     },
   };
 
@@ -34,9 +37,12 @@ const RootLayoutContent = () => {
     colors: {
       ...MD3DarkTheme.colors,
       primary: "lightblue",
+      primaryContainer: "#3e3e3e",
       background: "#252526",
       outline: "lightblue",
       onBackground: "#fafafa",
+      errorContainer: "#ff0e0e",
+      onErrorContainer: "#ff3e3e",
     },
   };
 

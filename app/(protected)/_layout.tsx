@@ -1,16 +1,40 @@
-import { Href, Redirect, Stack } from "expo-router";
+import { Href, Redirect } from "expo-router";
+import { Drawer } from "expo-router/drawer";
 import React from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { useTheme } from "react-native-paper";
 
 export default function ProtectedLayout() {
-  const isLoggedIn = false;
+  const theme = useTheme();
+  const isLoggedIn = true;
 
   if (!isLoggedIn) {
     return <Redirect href={"/login" as Href} />;
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-    </Stack>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Drawer>
+        <Drawer.Screen
+          name="index"
+          options={{
+            drawerLabel: "Početna",
+            title: "Početna",
+            headerStyle: { backgroundColor: theme.colors.background },
+            headerTintColor: theme.colors.onBackground,
+          }}
+        />
+
+        <Drawer.Screen
+          name="wholesaleGoods"
+          options={{
+            drawerLabel: "Veleprodajna roba",
+            title: "Veleprodajna roba",
+            headerStyle: { backgroundColor: theme.colors.background },
+            headerTintColor: theme.colors.onBackground,
+          }}
+        />
+      </Drawer>
+    </GestureHandlerRootView>
   );
 }

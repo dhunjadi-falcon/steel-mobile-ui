@@ -108,11 +108,11 @@ export default function LoginScreen() {
   );
 }
 
-const getStyles = (isDark: boolean) =>
+const getStyles = (isDarkThemeOn: boolean) =>
   StyleSheet.create({
     screenContainer: {
       flex: 1,
-      backgroundColor: isDark ? "#252526" : "#fafafa",
+      backgroundColor: isDarkThemeOn ? "#252526" : "#fafafa",
       padding: 16,
     },
     headerContainer: {
@@ -128,9 +128,9 @@ const getStyles = (isDark: boolean) =>
       borderWidth: 1,
       borderRadius: 99,
       backgroundColor: "transparent",
-      borderColor: isDark ? "#fafafa" : "#252526",
-      color: isDark ? "#fafafa" : "#252526",
+      borderColor: isDarkThemeOn ? "#fafafa" : "#252526",
+      color: isDarkThemeOn ? "#fafafa" : "#252526",
     },
-    placeholderTextColor: { color: isDark ? "#fafafa" : "#252526" },
+    placeholderTextColor: { color: isDarkThemeOn ? "#fafafa" : "#252526" },
     button: { borderRadius: 8 },
   });

@@ -6,7 +6,7 @@ export interface ContextState {
 }
 
 export const initialAppContextState: ContextState = {
-  isDarkThemeOn: false,
+  isDarkThemeOn: true,
 };
 
 export enum ActionType {
