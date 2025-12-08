@@ -3,6 +3,7 @@ import { Drawer } from "expo-router/drawer";
 import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useTheme } from "react-native-paper";
+import CustomDrawerContent from "../components/CustomDrawerContent";
 
 export default function ProtectedLayout() {
   const theme = useTheme();
@@ -14,7 +15,14 @@ export default function ProtectedLayout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer>
+      <Drawer
+        drawerContent={CustomDrawerContent}
+        screenOptions={{
+          drawerActiveBackgroundColor: theme.colors.primary,
+          drawerActiveTintColor: theme.colors.onBackground,
+          drawerInactiveTintColor: theme.colors.onBackground,
+        }}
+      >
         <Drawer.Screen
           name="index"
           options={{
