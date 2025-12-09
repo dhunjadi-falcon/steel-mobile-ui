@@ -1,16 +1,18 @@
 import { useAppContext } from "@/context/AppContext";
+import { WholesaleGoods } from "@/types";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { List, Text, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Filter from "../components/Filter";
 import ListItemDetails from "../components/ListItemDetails";
 
-const mockItems = [
+const mockItems: WholesaleGoods[] = [
   {
     accoordionTitle: "1874/200/1",
-    lot: "Z2186",
-    type: "S10L06",
+    lot: "Z2186534",
+    type: "abc",
     weight: "1440,0",
     amount: "15",
     supplier: "Neka firma",
@@ -21,8 +23,8 @@ const mockItems = [
   },
   {
     accoordionTitle: "1874/200/1",
-    lot: "Z2186",
-    type: "S10L06",
+    lot: "Z5657665",
+    type: "cde",
     weight: "1440,0",
     amount: "27",
     supplier: "Neka druga firma",
@@ -33,8 +35,8 @@ const mockItems = [
   },
   {
     accoordionTitle: "1874/200/1",
-    lot: "Z2186",
-    type: "S10L06",
+    lot: "Z99877",
+    type: "efg",
     weight: "1440,0",
     amount: "45",
     supplier: "treća firma",
@@ -45,12 +47,17 @@ const mockItems = [
   },
 ];
 
-const WholesaleGoods = () => {
+const WholesaleGoodsScreen = () => {
   const { state } = useAppContext();
   const styles = getStyles(state.isDarkThemeOn);
   const theme = useTheme();
 
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [filteredList, setFilteredList] = useState<WholesaleGoods[]>(mockItems);
+
+  const handleFilteredData = (data: WholesaleGoods[]) => {
+    setFilteredList(data);
+  };
 
   const handlePress = (id: string) => {
     setExpandedId(id === expandedId ? null : id);
@@ -63,8 +70,9 @@ const WholesaleGoods = () => {
         { backgroundColor: theme.colors.background },
       ]}
     >
+      <Filter data={mockItems} onFilteredData={handleFilteredData} />
       <FlatList
-        data={mockItems}
+        data={filteredList}
         keyExtractor={(item) => item.code}
         renderItem={({ item, index }) => {
           const isExpanded = item.code === expandedId;
@@ -85,7 +93,7 @@ const WholesaleGoods = () => {
               style={[
                 {
                   backgroundColor: theme.colors.primaryContainer,
-                  marginTop: index !== 0 ? 8 : 0,
+                  marginTop: 8,
                   borderTopEndRadius: 16,
                   borderTopStartRadius: 16,
                 },
@@ -107,7 +115,7 @@ const WholesaleGoods = () => {
   );
 };
 
-export default WholesaleGoods;
+export default WholesaleGoodsScreen;
 
 const getStyles = (isDarkThemeOn: boolean) =>
   StyleSheet.create({

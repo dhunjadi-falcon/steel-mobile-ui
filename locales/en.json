@@ -1,7 +1,10 @@
 {
   "drawer": {
     "home": "Home",
-    "wholesaleGoods": "Wholesale goods"
+    "wholesaleGoods": "Wholesale goods",
+    "activeGoods": "Active goods",
+    "usedGoods": "Used goods",
+    "tagSync": "TAG sync"
   },
 
   "login": {

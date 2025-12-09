@@ -1,7 +1,10 @@
 {
   "drawer": {
     "home": "Početna",
-    "wholesaleGoods": "Veleprodajna roba"
+    "wholesaleGoods": "Veleprodajna roba",
+    "activeGoods": "Aktivna roba",
+    "usedGoods": "Potrošena roba",
+    "tagSync": "Sinkronizacija TAG-a"
   },
 
   "login": {

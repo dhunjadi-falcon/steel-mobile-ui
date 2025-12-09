@@ -44,6 +44,36 @@ export default function ProtectedLayout() {
             headerTintColor: theme.colors.onBackground,
           }}
         />
+
+        <Drawer.Screen
+          name="activeGoods"
+          options={{
+            drawerLabel: t("drawer.activeGoods"),
+            title: t("drawer.activeGoods"),
+            headerStyle: { backgroundColor: theme.colors.background },
+            headerTintColor: theme.colors.onBackground,
+          }}
+        />
+
+        <Drawer.Screen
+          name="usedGoods"
+          options={{
+            drawerLabel: t("drawer.usedGoods"),
+            title: t("drawer.usedGoods"),
+            headerStyle: { backgroundColor: theme.colors.background },
+            headerTintColor: theme.colors.onBackground,
+          }}
+        />
+
+        <Drawer.Screen
+          name="tagSync"
+          options={{
+            drawerLabel: t("drawer.tagSync"),
+            title: t("drawer.tagSync"),
+            headerStyle: { backgroundColor: theme.colors.background },
+            headerTintColor: theme.colors.onBackground,
+          }}
+        />
       </Drawer>
     </GestureHandlerRootView>
   );
