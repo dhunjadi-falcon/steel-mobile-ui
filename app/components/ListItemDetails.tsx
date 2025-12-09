@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import { Button, Card, Text, useTheme } from "react-native-paper";
 
@@ -36,16 +37,17 @@ const ListItemDetails = ({
   code,
 }: ListItem) => {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const itemDetails = [
-    { label: "Tip Artikla", value: type },
-    { label: "Težina", value: weight },
-    { label: "Količina", value: amount },
-    { label: "Dobavljač", value: supplier },
-    { label: "Datum narudžbe", value: dateOfOrder },
-    { label: "Uneseno", value: entered },
-    { label: "Komentar", value: comment },
-    { label: "Šifra robe", value: code },
+    { label: t("wholesaleGoods.type"), value: type },
+    { label: t("wholesaleGoods.weight"), value: weight },
+    { label: t("wholesaleGoods.amount"), value: amount },
+    { label: t("wholesaleGoods.supplier"), value: supplier },
+    { label: t("wholesaleGoods.dateOfOrder"), value: dateOfOrder },
+    { label: t("wholesaleGoods.entered"), value: entered },
+    { label: t("wholesaleGoods.comment"), value: comment },
+    { label: t("wholesaleGoods.code"), value: code },
   ];
 
   return (
@@ -77,7 +79,7 @@ const ListItemDetails = ({
             ]}
             onPress={() => {}}
           >
-            Obriši
+            {t("common.delete")}
           </Button>
           <Button
             mode="outlined"
@@ -86,7 +88,7 @@ const ListItemDetails = ({
             style={[styles.button, { borderColor: theme.colors.primary }]}
             onPress={() => {}}
           >
-            Uredi
+            {t("common.edit")}
           </Button>
         </View>
       </Card.Content>

@@ -1,0 +1,34 @@
+{
+  "drawer": {
+    "home": "Početna",
+    "wholesaleGoods": "Veleprodajna roba"
+  },
+
+  "login": {
+    "usernamePlaceholder": "Korisničko ime ili E-mail",
+    "passwordPlaceholder": "Lozinka",
+    "login": "Prijava"
+  },
+
+  "home": {
+    "welcome": "Dobrodošao",
+    "receiving": "Zaprimanje",
+    "tagScan": "Skeniranje TAG-a"
+  },
+
+  "wholesaleGoods": {
+    "type": "Tip artikla: ",
+    "weight": "Težina: ",
+    "amount": "Količina: ",
+    "supplier": "Dobavljač: ",
+    "dateOfOrder": "Datum narudžbe: ",
+    "entered": "Uneseno: ",
+    "comment": "Komentar: ",
+    "code": "Šifra robe: "
+  },
+
+  "common": {
+    "delete": "Obriši",
+    "edit": "Uredi"
+  }
+}

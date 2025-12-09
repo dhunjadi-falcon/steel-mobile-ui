@@ -1,5 +1,6 @@
 import { ActionType, useAppContext } from "@/context/AppContext";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Image,
   KeyboardAvoidingView,
@@ -21,20 +22,22 @@ const languages = [
 ];
 
 export default function LoginScreen() {
-  const { state, dispatch } = useAppContext();
-  const [language, setLanguage] = useState<Language>("HR");
-  const [expanded, setExpanded] = useState(true);
-
-  const handlePress = () => setExpanded(!expanded);
-  const styles = getStyles(state.isDarkThemeOn);
   const theme = useTheme();
+  const { state, dispatch } = useAppContext();
+  const { i18n, t } = useTranslation();
+  const [language, setLanguage] = useState<Language>("HR");
+
+  const styles = getStyles(state.isDarkThemeOn);
 
   const toggleTheme = () => {
-    console.log("first");
     dispatch({
       type: ActionType.TOGGLE_DARK_THEME,
       payload: { isDarkThemeOn: !state.isDarkThemeOn },
     });
+  };
+
+  const changeLanguage = (lng: Language) => {
+    i18n.changeLanguage(lng);
   };
 
   return (
@@ -49,23 +52,27 @@ export default function LoginScreen() {
             value={state.isDarkThemeOn}
           />
           <SelectList
-            setSelected={(val: string) => setLanguage(val as Language)}
+            setSelected={(lng: Language) => {
+              setLanguage(lng.toLowerCase() as Language);
+              changeLanguage(lng.toLowerCase() as Language);
+            }}
             data={languages}
             save="value"
             placeholder={language}
             search={false}
-            dropdownTextStyles={{ color: theme.colors.onBackground }}
-            dropdownStyles={{
-              position: "absolute",
-              top: 35,
-              right: 0,
-              width: "100%",
+            boxStyles={styles.boxStyles}
+            dropdownStyles={styles.dropdownStyles}
+            dropdownTextStyles={{
+              color: theme.colors.onBackground,
+              display: "flex",
+              justifyContent: "center",
             }}
             inputStyles={{
               color: theme.colors.onBackground,
+              display: "flex",
+              justifyContent: "center",
             }}
             arrowicon={<></>}
-            boxStyles={{ position: "relative", width: "100%" }}
           />
         </View>
 
@@ -78,7 +85,7 @@ export default function LoginScreen() {
           <TextInput
             testID="textInput"
             mode="flat"
-            placeholder="Korisničko ime ili Email"
+            placeholder={t("login.usernamePlaceholder")}
             textColor="white"
             underlineColor={theme.colors.outline}
             activeUnderlineColor={theme.colors.outline}
@@ -88,7 +95,7 @@ export default function LoginScreen() {
           <TextInput
             testID="textInput"
             mode="flat"
-            placeholder="Lozinka"
+            placeholder={t("login.passwordPlaceholder")}
             underlineColor={theme.colors.outline}
             activeUnderlineColor={theme.colors.outline}
             textColor="white"
@@ -100,7 +107,7 @@ export default function LoginScreen() {
             textColor={theme.colors.background}
             style={{ marginTop: 32 }}
           >
-            Prijava
+            {t("login.login")}
           </Button>
         </View>
       </KeyboardAvoidingView>
@@ -121,16 +128,20 @@ const getStyles = (isDarkThemeOn: boolean) =>
       justifyContent: "space-between",
     },
     logo: { width: "100%", height: 200, marginTop: 100, marginBottom: 50 },
-    emailInput: {
-      height: 40,
-      margin: 12,
-      padding: 10,
-      borderWidth: 1,
-      borderRadius: 99,
-      backgroundColor: "transparent",
-      borderColor: isDarkThemeOn ? "#fafafa" : "#252526",
-      color: isDarkThemeOn ? "#fafafa" : "#252526",
-    },
     placeholderTextColor: { color: isDarkThemeOn ? "#fafafa" : "#252526" },
     button: { borderRadius: 8 },
+    dropdownStyles: {
+      position: "absolute",
+      top: 35,
+      right: 0,
+      width: 70,
+      display: "flex",
+      justifyContent: "center",
+    },
+    boxStyles: {
+      position: "relative",
+      width: 70,
+      display: "flex",
+      justifyContent: "center",
+    },
   });

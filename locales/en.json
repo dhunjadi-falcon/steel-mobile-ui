@@ -1,0 +1,34 @@
+{
+  "drawer": {
+    "home": "Home",
+    "wholesaleGoods": "Wholesale goods"
+  },
+
+  "login": {
+    "usernamePlaceholder": "Username or E-mail",
+    "passwordPlaceholder": "Password",
+    "login": "Login"
+  },
+
+  "home": {
+    "welcome": "Welcome",
+    "receiving": "Receiving of goods",
+    "tagScan": "TAG scanning"
+  },
+
+  "wholesaleGoods": {
+    "type": "Article type: ",
+    "weight": "Weight: ",
+    "amount": "Amount: ",
+    "supplier": "Supplier: ",
+    "dateOfOrder": "Date of order: ",
+    "entered": "Entered: ",
+    "comment": "Comment: ",
+    "code": "Code: "
+  },
+
+  "common": {
+    "delete": "Delete",
+    "edit": "Edit"
+  }
+}

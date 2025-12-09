@@ -1,7 +1,9 @@
 import { AppContextProvider, useAppContext } from "@/context/AppContext";
+import i18n from "@/i18n";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+import { I18nextProvider } from "react-i18next";
 import {
   MD3DarkTheme,
   MD3LightTheme,
@@ -51,13 +53,15 @@ const RootLayoutContent = () => {
   const statusBarStyle = isDarkTheme ? "light" : "dark";
   return (
     <React.Fragment>
-      <PaperProvider theme={theme}>
-        <StatusBar style={statusBarStyle} />
-        <Stack>
-          <Stack.Screen name="(protected)" options={{ headerShown: false }} />
-          <Stack.Screen name="login" options={{ headerShown: false }} />
-        </Stack>
-      </PaperProvider>
+      <I18nextProvider i18n={i18n}>
+        <PaperProvider theme={theme}>
+          <StatusBar style={statusBarStyle} />
+          <Stack>
+            <Stack.Screen name="(protected)" options={{ headerShown: false }} />
+            <Stack.Screen name="login" options={{ headerShown: false }} />
+          </Stack>
+        </PaperProvider>
+      </I18nextProvider>
     </React.Fragment>
   );
 };
