@@ -3,8 +3,10 @@ import { Item } from "@/types";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
-import { List, Text, useTheme } from "react-native-paper";
+import { Text, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AnimatedAccordionContent from "../components/AnimatedAccordionContent";
+import AnimatedAccordionHeader from "../components/AnimatedAccordionHeader";
 import Filter from "../components/Filter";
 import ListItemDetails from "../components/ListItemDetails";
 
@@ -77,37 +79,42 @@ const WholesaleGoodsScreen = () => {
         renderItem={({ item, index }) => {
           const isExpanded = item.code === expandedId;
 
-          const conditionalStyles = isExpanded
-            ? {
-                borderBottomEndRadius: 0,
-                borderBottomStartRadius: 0,
-              }
-            : {
-                borderRadius: 16,
-              };
+          const staticHeaderStyles = {
+            backgroundColor: theme.colors.primaryContainer,
+            marginTop: 8,
+            borderTopEndRadius: 16,
+            borderTopStartRadius: 16,
+          };
+
+          const contentStyles = {
+            backgroundColor: theme.colors.primaryContainer,
+            borderBottomEndRadius: isExpanded ? 16 : 0,
+            borderBottomStartRadius: isExpanded ? 16 : 0,
+          };
 
           return (
-            <List.Accordion
-              expanded={isExpanded}
-              onPress={() => handlePress(item.code)}
-              style={[
-                {
-                  backgroundColor: theme.colors.primaryContainer,
-                  marginTop: 8,
-                  borderTopEndRadius: 16,
-                  borderTopStartRadius: 16,
-                },
-                conditionalStyles,
-              ]}
-              title={
-                <View style={{ display: "flex", flexDirection: "column" }}>
-                  <Text variant="headlineLarge">{item.accoordionTitle}</Text>
-                  <Text variant="titleLarge">LOT: {item.lot}</Text>
-                </View>
-              }
-            >
-              <ListItemDetails {...item} />
-            </List.Accordion>
+            <View>
+              <AnimatedAccordionHeader
+                isExpanded={isExpanded}
+                onPress={() => handlePress(item.code)}
+                style={staticHeaderStyles}
+                title={
+                  <View style={{ display: "flex", flexDirection: "column" }}>
+                    <Text variant="headlineLarge">{item.accoordionTitle}</Text>
+                    <Text variant="titleLarge">LOT: {item.lot}</Text>
+                  </View>
+                }
+              >
+                <View style={{ height: 0 }} />
+              </AnimatedAccordionHeader>
+
+              <AnimatedAccordionContent
+                isExpanded={isExpanded}
+                style={contentStyles}
+              >
+                <ListItemDetails {...item} hideButtons />
+              </AnimatedAccordionContent>
+            </View>
           );
         }}
       />
