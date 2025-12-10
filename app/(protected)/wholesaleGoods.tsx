@@ -1,5 +1,5 @@
 import { useAppContext } from "@/context/AppContext";
-import { WholesaleGoods } from "@/types";
+import { Item } from "@/types";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
@@ -8,7 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Filter from "../components/Filter";
 import ListItemDetails from "../components/ListItemDetails";
 
-const mockItems: WholesaleGoods[] = [
+const mockItems: Item[] = [
   {
     accoordionTitle: "1874/200/1",
     lot: "Z2186534",
@@ -53,9 +53,9 @@ const WholesaleGoodsScreen = () => {
   const theme = useTheme();
 
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [filteredList, setFilteredList] = useState<WholesaleGoods[]>(mockItems);
+  const [filteredList, setFilteredList] = useState<Item[]>(mockItems);
 
-  const handleFilteredData = (data: WholesaleGoods[]) => {
+  const handleFilteredData = (data: Item[]) => {
     setFilteredList(data);
   };
 

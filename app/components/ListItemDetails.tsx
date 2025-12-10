@@ -1,18 +1,10 @@
+import { Item } from "@/types";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import { Button, Card, Text, useTheme } from "react-native-paper";
 
-type ListItem = {
-  type: string;
-  weight: string;
-  amount: string;
-  supplier: string;
-  dateOfOrder: string;
-  entered: string;
-  comment: string;
-  code: string;
-};
+type ListItemDetailsProps = Omit<Item, "lot"> & { hideButtons?: boolean };
 
 type DetailRowProps = {
   label: string;
@@ -35,7 +27,8 @@ const ListItemDetails = ({
   entered,
   comment,
   code,
-}: ListItem) => {
+  hideButtons,
+}: ListItemDetailsProps) => {
   const theme = useTheme();
   const { t } = useTranslation();
 
@@ -68,29 +61,31 @@ const ListItemDetails = ({
           ))}
         </View>
 
-        <View style={styles.buttonContainer}>
-          <Button
-            mode="outlined"
-            icon="delete"
-            textColor={theme.colors.onErrorContainer}
-            style={[
-              styles.button,
-              { borderColor: theme.colors.errorContainer },
-            ]}
-            onPress={() => {}}
-          >
-            {t("common.delete")}
-          </Button>
-          <Button
-            mode="outlined"
-            icon="file-document-edit"
-            textColor={theme.colors.primary}
-            style={[styles.button, { borderColor: theme.colors.primary }]}
-            onPress={() => {}}
-          >
-            {t("common.edit")}
-          </Button>
-        </View>
+        {!hideButtons && (
+          <View style={styles.buttonContainer}>
+            <Button
+              mode="outlined"
+              icon="delete"
+              textColor={theme.colors.onErrorContainer}
+              style={[
+                styles.button,
+                { borderColor: theme.colors.errorContainer },
+              ]}
+              onPress={() => {}}
+            >
+              {t("common.delete")}
+            </Button>
+            <Button
+              mode="outlined"
+              icon="file-document-edit"
+              textColor={theme.colors.primary}
+              style={[styles.button, { borderColor: theme.colors.primary }]}
+              onPress={() => {}}
+            >
+              {t("common.edit")}
+            </Button>
+          </View>
+        )}
       </Card.Content>
     </Card>
   );

@@ -1,4 +1,4 @@
-import { WholesaleGoods } from "@/types";
+import { Item } from "@/types";
 import React, { useEffect, useMemo, useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Calendar } from "react-native-calendars";
@@ -12,8 +12,10 @@ import {
 } from "react-native-paper";
 
 type FilterProps = {
-  data: WholesaleGoods[];
-  onFilteredData: (filteredData: WholesaleGoods[]) => void;
+  data: Item[];
+  onFilteredData: (filteredData: Item[]) => void;
+  hideTypeFilter?: boolean;
+  hideSupplierFilter?: boolean;
 };
 
 type CalenderOutput = {
@@ -24,7 +26,12 @@ type CalenderOutput = {
   year: number;
 };
 
-const Filter = ({ data, onFilteredData }: FilterProps) => {
+const Filter = ({
+  data,
+  onFilteredData,
+  hideTypeFilter,
+  hideSupplierFilter,
+}: FilterProps) => {
   const theme = useTheme();
   const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
   const [selectedDate, setSelectedDate] = useState("");
@@ -152,28 +159,32 @@ const Filter = ({ data, onFilteredData }: FilterProps) => {
         </Modal>
       </Portal>
 
-      <TextInput
-        mode="flat"
-        textColor="white"
-        underlineColor={theme.colors.outline}
-        activeUnderlineColor={theme.colors.outline}
-        placeholderTextColor={theme.colors.onBackground}
-        contentStyle={{ backgroundColor: theme.colors.background }}
-        placeholder="Filter by Type"
-        value={filters.type}
-        onChangeText={(text) => handleFilterChange("type", text)}
-      />
-      <TextInput
-        mode="flat"
-        textColor="white"
-        underlineColor={theme.colors.outline}
-        activeUnderlineColor={theme.colors.outline}
-        placeholderTextColor={theme.colors.onBackground}
-        contentStyle={{ backgroundColor: theme.colors.background }}
-        placeholder="Filter by Supplier"
-        value={filters.supplier}
-        onChangeText={(text) => handleFilterChange("supplier", text)}
-      />
+      {!hideTypeFilter && (
+        <TextInput
+          mode="flat"
+          textColor="white"
+          underlineColor={theme.colors.outline}
+          activeUnderlineColor={theme.colors.outline}
+          placeholderTextColor={theme.colors.onBackground}
+          contentStyle={{ backgroundColor: theme.colors.background }}
+          placeholder="Filter by Type"
+          value={filters.type}
+          onChangeText={(text) => handleFilterChange("type", text)}
+        />
+      )}
+      {!hideSupplierFilter && (
+        <TextInput
+          mode="flat"
+          textColor="white"
+          underlineColor={theme.colors.outline}
+          activeUnderlineColor={theme.colors.outline}
+          placeholderTextColor={theme.colors.onBackground}
+          contentStyle={{ backgroundColor: theme.colors.background }}
+          placeholder="Filter by Supplier"
+          value={filters.supplier}
+          onChangeText={(text) => handleFilterChange("supplier", text)}
+        />
+      )}
     </View>
   );
 };

@@ -1,4 +1,4 @@
-export type WholesaleGoods = {
+export type Item = {
   accoordionTitle: string;
   lot: string;
   type: string;
