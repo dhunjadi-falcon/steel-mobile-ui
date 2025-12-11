@@ -1,11 +1,10 @@
 import { useAppContext } from "@/context/AppContext";
 import { Item } from "@/types";
 import React, { useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
-import { Text, useTheme } from "react-native-paper";
+import { FlatList, StyleSheet } from "react-native";
+import { useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
-import AnimatedAccordionContent from "../components/AnimatedAccordionContent";
-import AnimatedAccordionHeader from "../components/AnimatedAccordionHeader";
+import AnimatedAccordion from "../components/AnimatedAccordion";
 import Filter from "../components/Filter";
 import ListItemDetails from "../components/ListItemDetails";
 
@@ -82,43 +81,14 @@ const ActiveGoodsScreen = () => {
         keyExtractor={(item) => item.code}
         renderItem={({ item }) => {
           const isExpanded = item.code === expandedId;
-
-          const staticHeaderStyles = {
-            backgroundColor: theme.colors.primaryContainer,
-            marginTop: 8,
-            borderTopEndRadius: 16,
-            borderTopStartRadius: 16,
-          };
-
-          const contentStyles = {
-            backgroundColor: theme.colors.primaryContainer,
-            borderBottomEndRadius: isExpanded ? 16 : 0,
-            borderBottomStartRadius: isExpanded ? 16 : 0,
-          };
-
           return (
-            <View>
-              <AnimatedAccordionHeader
-                isExpanded={isExpanded}
-                onPress={() => handlePress(item.code)}
-                style={staticHeaderStyles}
-                title={
-                  <View style={{ display: "flex", flexDirection: "column" }}>
-                    <Text variant="headlineLarge">{item.accoordionTitle}</Text>
-                    <Text variant="titleLarge">LOT: {item.lot}</Text>
-                  </View>
-                }
-              >
-                <View style={{ height: 0 }} />
-              </AnimatedAccordionHeader>
-
-              <AnimatedAccordionContent
-                isExpanded={isExpanded}
-                style={contentStyles}
-              >
-                <ListItemDetails {...item} hideButtons />
-              </AnimatedAccordionContent>
-            </View>
+            <AnimatedAccordion
+              item={item}
+              isExpanded={isExpanded}
+              onPress={() => handlePress(item.code)}
+            >
+              <ListItemDetails {...item} />
+            </AnimatedAccordion>
           );
         }}
       />
