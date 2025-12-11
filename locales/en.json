@@ -4,7 +4,8 @@
     "wholesaleGoods": "Wholesale goods",
     "activeGoods": "Active goods",
     "usedGoods": "Used goods",
-    "tagSync": "TAG sync"
+    "tagSync": "TAG sync",
+    "inventoryCheck": "Inventory check"
   },
 
   "login": {

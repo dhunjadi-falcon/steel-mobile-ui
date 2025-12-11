@@ -74,6 +74,16 @@ export default function ProtectedLayout() {
             headerTintColor: theme.colors.onBackground,
           }}
         />
+
+        <Drawer.Screen
+          name="inventoryCheck"
+          options={{
+            drawerLabel: t("drawer.inventoryCheck"),
+            title: t("drawer.inventoryCheck"),
+            headerStyle: { backgroundColor: theme.colors.background },
+            headerTintColor: theme.colors.onBackground,
+          }}
+        />
       </Drawer>
     </GestureHandlerRootView>
   );

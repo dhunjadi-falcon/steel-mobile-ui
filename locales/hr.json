@@ -4,7 +4,8 @@
     "wholesaleGoods": "Veleprodajna roba",
     "activeGoods": "Aktivna roba",
     "usedGoods": "Potrošena roba",
-    "tagSync": "Sinkronizacija TAG-a"
+    "tagSync": "Sinkronizacija TAG-a",
+    "inventoryCheck": "Provjera stanja robe"
   },
 
   "login": {

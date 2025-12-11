@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Accordion from "../components/AnimatedAccordionItem";
+import AnimatedAccordion from "../components/AnimatedAccordion";
 import Filter from "../components/Filter";
 import ListItemDetails from "../components/ListItemDetails";
 
@@ -54,9 +54,14 @@ const WholesaleGoodsScreen = () => {
   const theme = useTheme();
 
   const [filteredList, setFilteredList] = useState<Item[]>(mockItems);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const handleFilteredData = (data: Item[]) => {
     setFilteredList(data);
+  };
+
+  const handlePress = (id: string) => {
+    setExpandedId(id === expandedId ? null : id);
   };
 
   return (
@@ -70,11 +75,18 @@ const WholesaleGoodsScreen = () => {
       <FlatList
         data={filteredList}
         keyExtractor={(item) => item.code}
-        renderItem={({ item }) => (
-          <Accordion item={item}>
-            <ListItemDetails {...item} />
-          </Accordion>
-        )}
+        renderItem={({ item }) => {
+          const isExpanded = item.code === expandedId;
+          return (
+            <AnimatedAccordion
+              item={item}
+              isExpanded={isExpanded}
+              onPress={() => handlePress(item.code)}
+            >
+              <ListItemDetails {...item} />
+            </AnimatedAccordion>
+          );
+        }}
       />
     </SafeAreaView>
   );
