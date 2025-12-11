@@ -9,4 +9,6 @@ export type Item = {
   entered: string;
   comment: string;
   code: string;
+  fi?: string;
+  isRunning?: boolean;
 };

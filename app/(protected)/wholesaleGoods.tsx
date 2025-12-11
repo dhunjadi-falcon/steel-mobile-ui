@@ -3,7 +3,7 @@ import { Item } from "@/types";
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
-import { useTheme } from "react-native-paper";
+import { Card, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AnimatedAccordion from "../components/AnimatedAccordion";
 import Filter from "../components/Filter";
@@ -71,7 +71,16 @@ const WholesaleGoodsScreen = () => {
         { backgroundColor: theme.colors.background },
       ]}
     >
-      <Filter data={mockItems} onFilteredData={handleFilteredData} />
+      <Card style={[styles.card, styles.filterCard]}>
+        <Card.Content>
+          <Filter
+            data={mockItems}
+            onFilteredData={handleFilteredData}
+            hideFiFilter
+            hideIsRunningFilter
+          />
+        </Card.Content>
+      </Card>
       <FlatList
         data={filteredList}
         keyExtractor={(item) => item.code}
@@ -106,6 +115,9 @@ const getStyles = (isDarkThemeOn: boolean) =>
     },
     card: {
       backgroundColor: isDarkThemeOn ? "#3e3e3e" : "#e4e5f1",
+    },
+    filterCard: {
+      marginBottom: 16,
     },
     cardText: {
       fontSize: 32,

@@ -1,8 +1,10 @@
+import { useAppContext } from "@/context/AppContext";
 import { Item } from "@/types";
 import React, { useEffect, useMemo, useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Calendar } from "react-native-calendars";
 import {
+  Checkbox,
   Icon,
   Modal,
   Portal,
@@ -16,6 +18,9 @@ type FilterProps = {
   onFilteredData: (filteredData: Item[]) => void;
   hideTypeFilter?: boolean;
   hideSupplierFilter?: boolean;
+  hideLOTFilter?: boolean;
+  hideFiFilter?: boolean;
+  hideIsRunningFilter?: boolean;
 };
 
 type CalenderOutput = {
@@ -31,7 +36,11 @@ const Filter = ({
   onFilteredData,
   hideTypeFilter,
   hideSupplierFilter,
+  hideLOTFilter,
+  hideFiFilter,
+  hideIsRunningFilter,
 }: FilterProps) => {
+  const { state } = useAppContext();
   const theme = useTheme();
   const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
   const [selectedDate, setSelectedDate] = useState("");
@@ -39,6 +48,8 @@ const Filter = ({
     lot: "",
     type: "",
     supplier: "",
+    fi: "",
+    isRunning: false,
   });
 
   const showModal = () => setIsCalendarOpen(true);
@@ -58,6 +69,8 @@ const Filter = ({
     const typeFilter = filters.type.toLowerCase();
     const supplierFilter = filters.supplier.toLowerCase();
     const lotFilter = filters.lot.toLowerCase();
+    const fiFilter = filters.fi.toLowerCase();
+    const isRunningFilter = filters.isRunning;
 
     return data.filter((item) => {
       const typeMatch = item.type.toLowerCase().includes(typeFilter);
@@ -67,10 +80,20 @@ const Filter = ({
         .includes(supplierFilter);
 
       const lotMatch = item.lot.toLowerCase().includes(lotFilter);
+      const fiMatch = item.fi?.toLowerCase().includes(fiFilter);
+      const isRunningMatch = item.isRunning;
 
+      // Dodati fiMatch i isRunningMatch
       return typeMatch && supplierMatch && lotMatch;
     });
-  }, [data, filters.supplier, filters.type, filters.lot]);
+  }, [
+    data,
+    filters.supplier,
+    filters.type,
+    filters.lot,
+    filters.fi,
+    filters.isRunning,
+  ]);
 
   useEffect(() => {
     onFilteredData(filteredData);
@@ -82,33 +105,40 @@ const Filter = ({
 
   return (
     <View style={styles.filterContainer}>
-      <TextInput
-        mode="flat"
-        textColor="white"
-        underlineColor={theme.colors.outline}
-        activeUnderlineColor={theme.colors.outline}
-        placeholderTextColor={theme.colors.onBackground}
-        contentStyle={{ backgroundColor: theme.colors.background }}
-        placeholder="Filter by LOT"
-        value={filters.lot}
-        onChangeText={(text) => handleFilterChange("lot", text)}
-      />
+      {!hideLOTFilter && (
+        <TextInput
+          mode="flat"
+          textColor="white"
+          underlineColor={theme.colors.outline}
+          activeUnderlineColor={theme.colors.outline}
+          placeholderTextColor={theme.colors.onBackground}
+          contentStyle={{ backgroundColor: theme.colors.background }}
+          placeholder="Filter by LOT"
+          value={filters.lot}
+          onChangeText={(text) => handleFilterChange("lot", text)}
+        />
+      )}
 
       <TouchableOpacity
-        style={{
-          height: 50,
-          width: "100%",
-          borderWidth: 0,
-          borderBlockColor: theme.colors.outline,
-          paddingHorizontal: 16,
-          borderBottomWidth: 2,
-          display: "flex",
-          justifyContent: "center",
-        }}
+        activeOpacity={1}
+        style={[
+          styles.calendatTouchableOpacity,
+          {
+            borderBlockColor: state.isDarkThemeOn
+              ? "rgba(173, 216, 230, 0.6)"
+              : "rgba(0, 180, 216, 0.6)",
+            backgroundColor: theme.colors.background,
+          },
+        ]}
         onPress={showModal}
       >
         {selectedDate ? (
-          <Text style={{ color: theme.colors.onBackground, fontSize: 16 }}>
+          <Text
+            style={{
+              color: theme.colors.onBackground,
+              fontSize: 16,
+            }}
+          >
             {selectedDate}
           </Text>
         ) : (
@@ -118,9 +148,17 @@ const Filter = ({
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
+              height: 56,
             }}
           >
-            <Text style={{ color: theme.colors.onBackground, fontSize: 16 }}>
+            <Text
+              style={{
+                color: theme.colors.onBackground,
+                fontSize: 16,
+                width: "auto",
+                flexGrow: 1,
+              }}
+            >
               DD/MM/YYYY
             </Text>
             <Icon size={20} source="calendar" />
@@ -185,6 +223,32 @@ const Filter = ({
           onChangeText={(text) => handleFilterChange("supplier", text)}
         />
       )}
+
+      {!hideFiFilter && (
+        <TextInput
+          mode="flat"
+          textColor="white"
+          underlineColor={theme.colors.outline}
+          activeUnderlineColor={theme.colors.outline}
+          placeholderTextColor={theme.colors.onBackground}
+          contentStyle={{ backgroundColor: theme.colors.background }}
+          placeholder="Filter by Fi"
+          value={filters.fi}
+          onChangeText={(text) => handleFilterChange("fi", text)}
+        />
+      )}
+
+      {!hideIsRunningFilter && (
+        <View>
+          <Checkbox.Item
+            label="Samo u tijeku"
+            status={filters.isRunning ? "checked" : "unchecked"}
+            onPress={() => {
+              setFilters((prev) => ({ ...prev, isRunning: !prev.isRunning }));
+            }}
+          />
+        </View>
+      )}
     </View>
   );
 };
@@ -193,8 +257,17 @@ export default Filter;
 const styles = StyleSheet.create({
   filterContainer: {
     marginBottom: 10,
+    display: "flex",
+    flexDirection: "column",
+    gap: 16,
+  },
+  calendatTouchableOpacity: {
+    height: 56,
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    borderWidth: 0,
+    paddingHorizontal: 16,
     borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-    paddingBottom: 10,
   },
 });
