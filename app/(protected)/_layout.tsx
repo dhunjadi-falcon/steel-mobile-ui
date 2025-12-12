@@ -84,6 +84,14 @@ export default function ProtectedLayout() {
             headerTintColor: theme.colors.onBackground,
           }}
         />
+
+        <Drawer.Screen
+          name="(actions)"
+          options={{
+            headerShown: false,
+            drawerItemStyle: { height: 0, overflow: "hidden" },
+          }}
+        />
       </Drawer>
     </GestureHandlerRootView>
   );

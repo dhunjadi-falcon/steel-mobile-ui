@@ -26,6 +26,7 @@ const RootLayoutContent = () => {
       ...MD3LightTheme.colors,
       primary: "#00b4d8",
       primaryContainer: "#e4e5f1",
+      tertiary: "#4CAF50", // success
       background: "#fafafa",
       outline: "#00b4d8",
       onBackground: "#252526",
@@ -40,6 +41,7 @@ const RootLayoutContent = () => {
       ...MD3DarkTheme.colors,
       primary: "lightblue",
       primaryContainer: "#3e3e3e",
+      tertiary: "#4CAF50", // success
       background: "#252526",
       outline: "lightblue",
       onBackground: "#fafafa",
