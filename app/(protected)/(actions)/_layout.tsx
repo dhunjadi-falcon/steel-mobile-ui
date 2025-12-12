@@ -14,7 +14,8 @@ export default function ActionsLayout() {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="deleteActionScreen" />
+      <Stack.Screen name="index" />
+      <Stack.Screen name="error" />
     </Stack>
   );
 }

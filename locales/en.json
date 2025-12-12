@@ -48,8 +48,20 @@
     }
   },
 
+  "itemActions": {
+    "cardHeader": "Choose reason",
+    "error": "Error",
+    "dispatch": "Dispatch",
+    "internalProcesses": "Internal processes",
+
+    "reasonError": {
+      "cardHeader": "Enter reason"
+    }
+  },
+
   "common": {
     "delete": "Delete",
-    "edit": "Edit"
+    "edit": "Edit",
+    "close": "Close"
   }
 }

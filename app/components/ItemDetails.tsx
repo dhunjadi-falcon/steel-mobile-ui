@@ -65,7 +65,12 @@ const ItemDetails = ({
         {!hideButtons && (
           <View style={styles.buttonContainer}>
             <Link
-              href={"/(protected)/deleteActionScreen" as Href}
+              href={{
+                pathname: "/(protected)/(actions)",
+                params: {
+                  code,
+                },
+              }}
               asChild
               style={styles.link}
             >

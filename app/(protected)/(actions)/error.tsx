@@ -1,12 +1,14 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import { Button, Text, TextInput, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const DeleteActionErrorScreen = () => {
+const ErrorScreen = () => {
   const theme = useTheme();
   const router = useRouter();
+  const { t } = useTranslation();
 
   const [reason, setReason] = useState("");
 
@@ -24,7 +26,7 @@ const DeleteActionErrorScreen = () => {
         ]}
       >
         <Text variant="titleLarge" style={{ color: theme.colors.onBackground }}>
-          Unesite razlog
+          {t("itemActions.reasonError.cardHeader")}
         </Text>
 
         <TextInput
@@ -46,7 +48,7 @@ const DeleteActionErrorScreen = () => {
           textColor={theme.colors.primary}
           style={{ borderColor: theme.colors.primary, width: "100%" }}
         >
-          Potvrdi
+          {t("common.confirm")}
         </Button>
 
         <Button
@@ -55,14 +57,14 @@ const DeleteActionErrorScreen = () => {
           style={{ borderColor: theme.colors.errorContainer, width: "100%" }}
           onPress={() => router.back()}
         >
-          Nazad
+          {t("common.back")}
         </Button>
       </View>
     </SafeAreaView>
   );
 };
 
-export default DeleteActionErrorScreen;
+export default ErrorScreen;
 
 const styles = StyleSheet.create({
   screenContainer: {

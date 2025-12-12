@@ -1,13 +1,17 @@
-import { Href, useRouter } from "expo-router";
+import { Href, useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import { Button, Card, Text, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const DeleteActionScreen = () => {
+  const { code } = useLocalSearchParams();
   const theme = useTheme();
   const router = useRouter();
+  const { t } = useTranslation();
 
+  console.log(code, "(actions)/index");
   return (
     <SafeAreaView
       style={[
@@ -26,8 +30,9 @@ const DeleteActionScreen = () => {
             variant="titleLarge"
             style={{ color: theme.colors.onBackground }}
           >
-            Odaberi razlog
+            {t("itemActions.cardHeader")}
           </Text>
+
           <View style={styles.buttonsContainer}>
             <View style={styles.errorAndDispatchButtons}>
               <Button
@@ -36,12 +41,10 @@ const DeleteActionScreen = () => {
                 textColor={theme.colors.onErrorContainer}
                 style={{ borderColor: theme.colors.errorContainer, flex: 1 }}
                 onPress={() =>
-                  router.navigate(
-                    "/(protected)/(actions)/deleteActionErrorScreen" as Href
-                  )
+                  router.navigate("/(protected)/(actions)/error" as Href)
                 }
               >
-                Greška
+                {t("itemActions.error")}
               </Button>
               <Button
                 mode="outlined"
@@ -49,7 +52,7 @@ const DeleteActionScreen = () => {
                 textColor={theme.colors.tertiary}
                 style={{ borderColor: theme.colors.tertiary, flex: 1 }}
               >
-                Otpremi
+                {t("itemActions.dispatch")}
               </Button>
             </View>
 
@@ -63,7 +66,7 @@ const DeleteActionScreen = () => {
                   { borderColor: theme.colors.primary },
                 ]}
               >
-                Interni procesi
+                {t("itemActions.internalProcesses")}
               </Button>
             </View>
 
@@ -74,7 +77,7 @@ const DeleteActionScreen = () => {
                 style={[styles.closeButton, { width: "100%" }]}
                 onPress={() => router.replace("/(protected)/wholesaleGoods")}
               >
-                Zatvori
+                {t("common.close")}
               </Button>
             </View>
           </View>

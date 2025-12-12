@@ -48,8 +48,22 @@
     }
   },
 
+  "itemActions": {
+    "cardHeader": "Odaberite razlog",
+    "error": "Greška",
+    "dispatch": "Otpremi",
+    "internalProcesses": "Interni procesi",
+
+    "reasonError": {
+      "cardHeader": "Unesite razlog"
+    }
+  },
+
   "common": {
     "delete": "Obriši",
-    "edit": "Uredi"
+    "edit": "Uredi",
+    "close": "Zatvori",
+    "confirm": "Potvrdi",
+    "back": "Nazad"
   }
 }
