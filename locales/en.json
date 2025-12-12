@@ -56,6 +56,11 @@
 
     "reasonError": {
       "cardHeader": "Enter reason"
+    },
+
+    "reasonDispatch": {
+      "cardHeader": "Select dispatch place",
+      "dispatch": "Dispatch"
     }
   },
 

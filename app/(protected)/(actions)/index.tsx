@@ -51,6 +51,9 @@ const DeleteActionScreen = () => {
                 icon="file-document-edit"
                 textColor={theme.colors.tertiary}
                 style={{ borderColor: theme.colors.tertiary, flex: 1 }}
+                onPress={() =>
+                  router.navigate("/(protected)/(actions)/dispatch" as Href)
+                }
               >
                 {t("itemActions.dispatch")}
               </Button>

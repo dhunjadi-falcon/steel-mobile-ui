@@ -16,6 +16,7 @@ export default function ActionsLayout() {
     >
       <Stack.Screen name="index" />
       <Stack.Screen name="error" />
+      <Stack.Screen name="dispatch" />
     </Stack>
   );
 }
