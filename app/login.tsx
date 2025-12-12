@@ -85,7 +85,7 @@ export default function LoginScreen() {
           <TextInput
             testID="textInput"
             mode="flat"
-            placeholder={t("login.usernamePlaceholder")}
+            placeholder={t("screens.login.usernamePlaceholder")}
             textColor="white"
             underlineColor={theme.colors.outline}
             activeUnderlineColor={theme.colors.outline}
@@ -95,7 +95,7 @@ export default function LoginScreen() {
           <TextInput
             testID="textInput"
             mode="flat"
-            placeholder={t("login.passwordPlaceholder")}
+            placeholder={t("screens.login.passwordPlaceholder")}
             underlineColor={theme.colors.outline}
             activeUnderlineColor={theme.colors.outline}
             textColor="white"
@@ -107,7 +107,7 @@ export default function LoginScreen() {
             textColor={theme.colors.background}
             style={{ marginTop: 32 }}
           >
-            {t("login.login")}
+            {t("screens.login.login")}
           </Button>
         </View>
       </KeyboardAvoidingView>

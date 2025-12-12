@@ -1,34 +1,51 @@
 {
-  "drawer": {
-    "home": "Početna",
-    "wholesaleGoods": "Veleprodajna roba",
-    "activeGoods": "Aktivna roba",
-    "usedGoods": "Potrošena roba",
-    "tagSync": "Sinkronizacija TAG-a",
-    "inventoryCheck": "Provjera stanja robe"
+  "screens": {
+    "login": {
+      "usernamePlaceholder": "Korisničko ime ili E-mail",
+      "passwordPlaceholder": "Lozinka",
+      "login": "Prijava"
+    },
+
+    "home": {
+      "welcome": "Dobrodošao",
+      "receiving": "Zaprimanje",
+      "tagScan": "Skeniranje TAG-a"
+    },
+
+    "tagSync": {
+      "title": "Sinkronizacija TAG-a",
+      "buttonext": "Sinkroniziranje TAG-a"
+    }
   },
 
-  "login": {
-    "usernamePlaceholder": "Korisničko ime ili E-mail",
-    "passwordPlaceholder": "Lozinka",
-    "login": "Prijava"
-  },
+  "components": {
+    "drawer": {
+      "home": "Početna",
+      "wholesaleGoods": "Veleprodajna roba",
+      "activeGoods": "Aktivna roba",
+      "usedGoods": "Potrošena roba",
+      "tagSync": "Sinkronizacija TAG-a",
+      "inventoryCheck": "Provjera stanja robe"
+    },
 
-  "home": {
-    "welcome": "Dobrodošao",
-    "receiving": "Zaprimanje",
-    "tagScan": "Skeniranje TAG-a"
-  },
+    "filter": {
+      "lotPlaceholder": "LOT",
+      "typePlaceholder": "Tip",
+      "supplierPlaceholder": "Dobavljač",
+      "fiPlaceholder": "Fi",
+      "isRunningLabel": "Samo u tijeku"
+    },
 
-  "wholesaleGoods": {
-    "type": "Tip artikla: ",
-    "weight": "Težina: ",
-    "amount": "Količina: ",
-    "supplier": "Dobavljač: ",
-    "dateOfOrder": "Datum narudžbe: ",
-    "entered": "Uneseno: ",
-    "comment": "Komentar: ",
-    "code": "Šifra robe: "
+    "itemDetails": {
+      "type": "Tip artikla: ",
+      "weight": "Težina: ",
+      "amount": "Količina: ",
+      "supplier": "Dobavljač: ",
+      "dateOfOrder": "Datum narudžbe: ",
+      "entered": "Uneseno: ",
+      "comment": "Komentar: ",
+      "code": "Šifra robe: "
+    }
   },
 
   "common": {

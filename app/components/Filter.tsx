@@ -107,12 +107,16 @@ const Filter = ({
     <View style={styles.filterContainer}>
       {!hideLOTFilter && (
         <TextInput
-          mode="flat"
-          textColor="white"
-          underlineColor={theme.colors.outline}
-          activeUnderlineColor={theme.colors.outline}
+          mode="outlined"
+          outlineStyle={{ borderRadius: 16 }}
+          contentStyle={{
+            backgroundColor: theme.colors.background,
+            borderRadius: 16,
+          }}
+          textColor={theme.colors.onBackground}
+          outlineColor={theme.colors.outline}
+          activeOutlineColor={theme.colors.outline}
           placeholderTextColor={theme.colors.onBackground}
-          contentStyle={{ backgroundColor: theme.colors.background }}
           placeholder="Filter by LOT"
           value={filters.lot}
           onChangeText={(text) => handleFilterChange("lot", text)}
@@ -124,10 +128,9 @@ const Filter = ({
         style={[
           styles.calendatTouchableOpacity,
           {
-            borderBlockColor: state.isDarkThemeOn
-              ? "rgba(173, 216, 230, 0.6)"
-              : "rgba(0, 180, 216, 0.6)",
+            borderBlockColor: "transparent",
             backgroundColor: theme.colors.background,
+            borderRadius: 16,
           },
         ]}
         onPress={showModal}
@@ -199,12 +202,14 @@ const Filter = ({
 
       {!hideTypeFilter && (
         <TextInput
-          mode="flat"
-          textColor="white"
-          underlineColor={theme.colors.outline}
-          activeUnderlineColor={theme.colors.outline}
+          mode="outlined"
+          outlineStyle={{ borderRadius: 16 }}
+          contentStyle={{
+            backgroundColor: theme.colors.background,
+            borderRadius: 16,
+          }}
+          textColor={theme.colors.onBackground}
           placeholderTextColor={theme.colors.onBackground}
-          contentStyle={{ backgroundColor: theme.colors.background }}
           placeholder="Filter by Type"
           value={filters.type}
           onChangeText={(text) => handleFilterChange("type", text)}
@@ -212,12 +217,14 @@ const Filter = ({
       )}
       {!hideSupplierFilter && (
         <TextInput
-          mode="flat"
-          textColor="white"
-          underlineColor={theme.colors.outline}
-          activeUnderlineColor={theme.colors.outline}
+          mode="outlined"
+          outlineStyle={{ borderRadius: 16 }}
+          contentStyle={{
+            backgroundColor: theme.colors.background,
+            borderRadius: 16,
+          }}
+          textColor={theme.colors.onBackground}
           placeholderTextColor={theme.colors.onBackground}
-          contentStyle={{ backgroundColor: theme.colors.background }}
           placeholder="Filter by Supplier"
           value={filters.supplier}
           onChangeText={(text) => handleFilterChange("supplier", text)}
@@ -226,12 +233,14 @@ const Filter = ({
 
       {!hideFiFilter && (
         <TextInput
-          mode="flat"
-          textColor="white"
-          underlineColor={theme.colors.outline}
-          activeUnderlineColor={theme.colors.outline}
+          mode="outlined"
+          outlineStyle={{ borderRadius: 16 }}
+          contentStyle={{
+            backgroundColor: theme.colors.background,
+            borderRadius: 16,
+          }}
+          textColor={theme.colors.onBackground}
           placeholderTextColor={theme.colors.onBackground}
-          contentStyle={{ backgroundColor: theme.colors.background }}
           placeholder="Filter by Fi"
           value={filters.fi}
           onChangeText={(text) => handleFilterChange("fi", text)}

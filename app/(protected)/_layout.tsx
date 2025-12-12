@@ -28,8 +28,8 @@ export default function ProtectedLayout() {
         <Drawer.Screen
           name="index"
           options={{
-            drawerLabel: t("drawer.home"),
-            title: t("drawer.home"),
+            drawerLabel: t("components.drawer.home"),
+            title: t("components.drawer.home"),
             headerStyle: { backgroundColor: theme.colors.background },
             headerTintColor: theme.colors.onBackground,
           }}
@@ -38,8 +38,8 @@ export default function ProtectedLayout() {
         <Drawer.Screen
           name="wholesaleGoods"
           options={{
-            drawerLabel: t("drawer.wholesaleGoods"),
-            title: t("drawer.wholesaleGoods"),
+            drawerLabel: t("components.drawer.wholesaleGoods"),
+            title: t("components.drawer.wholesaleGoods"),
             headerStyle: { backgroundColor: theme.colors.background },
             headerTintColor: theme.colors.onBackground,
           }}
@@ -48,8 +48,8 @@ export default function ProtectedLayout() {
         <Drawer.Screen
           name="activeGoods"
           options={{
-            drawerLabel: t("drawer.activeGoods"),
-            title: t("drawer.activeGoods"),
+            drawerLabel: t("components.drawer.activeGoods"),
+            title: t("components.drawer.activeGoods"),
             headerStyle: { backgroundColor: theme.colors.background },
             headerTintColor: theme.colors.onBackground,
           }}
@@ -58,8 +58,8 @@ export default function ProtectedLayout() {
         <Drawer.Screen
           name="usedGoods"
           options={{
-            drawerLabel: t("drawer.usedGoods"),
-            title: t("drawer.usedGoods"),
+            drawerLabel: t("components.drawer.usedGoods"),
+            title: t("components.drawer.usedGoods"),
             headerStyle: { backgroundColor: theme.colors.background },
             headerTintColor: theme.colors.onBackground,
           }}
@@ -68,8 +68,8 @@ export default function ProtectedLayout() {
         <Drawer.Screen
           name="tagSync"
           options={{
-            drawerLabel: t("drawer.tagSync"),
-            title: t("drawer.tagSync"),
+            drawerLabel: t("components.drawer.tagSync"),
+            title: t("components.drawer.tagSync"),
             headerStyle: { backgroundColor: theme.colors.background },
             headerTintColor: theme.colors.onBackground,
           }}
@@ -78,8 +78,8 @@ export default function ProtectedLayout() {
         <Drawer.Screen
           name="inventoryCheck"
           options={{
-            drawerLabel: t("drawer.inventoryCheck"),
-            title: t("drawer.inventoryCheck"),
+            drawerLabel: t("components.drawer.inventoryCheck"),
+            title: t("components.drawer.inventoryCheck"),
             headerStyle: { backgroundColor: theme.colors.background },
             headerTintColor: theme.colors.onBackground,
           }}

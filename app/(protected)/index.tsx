@@ -19,13 +19,13 @@ const HomeScreen = () => {
       ]}
     >
       <Text style={[styles.titleText, { color: theme.colors.onBackground }]}>
-        {t("home.welcome")}, {`{username}`}
+        {t("screens.home.welcome")}, {`{username}`}
       </Text>
 
       <Card style={[styles.card, { marginBottom: 32 }]}>
         <Card.Content>
           <Text variant="titleLarge" style={styles.cardText}>
-            {t("home.receiving")}
+            {t("screens.home.receiving")}
           </Text>
         </Card.Content>
       </Card>
@@ -36,7 +36,7 @@ const HomeScreen = () => {
             variant="titleLarge"
             style={[styles.cardText, { color: theme.colors.onBackground }]}
           >
-            {t("home.tagScan")}
+            {t("screens.home.tagScan")}
           </Text>
         </Card.Content>
       </Card>

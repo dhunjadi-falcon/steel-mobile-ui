@@ -1,4 +1,5 @@
 import { useAppContext } from "@/context/AppContext";
+import { mockWholesaleGoodsItems } from "@/data/mockWholesaleGoodsItems";
 import { Item } from "@/types";
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
@@ -7,53 +8,16 @@ import { Card, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AnimatedAccordion from "../components/AnimatedAccordion";
 import Filter from "../components/Filter";
-import ListItemDetails from "../components/ListItemDetails";
-
-const mockItems: Item[] = [
-  {
-    accoordionTitle: "1874/200/1",
-    lot: "Z2186534",
-    type: "abc",
-    weight: "1440,0",
-    amount: "15",
-    supplier: "Neka firma",
-    dateOfOrder: "14.05.2024.",
-    entered: "15.05.2024.",
-    comment: "komentar",
-    code: "jflgkdflgndf-ggre4464",
-  },
-  {
-    accoordionTitle: "1874/200/1",
-    lot: "Z5657665",
-    type: "cde",
-    weight: "1440,0",
-    amount: "27",
-    supplier: "Neka druga firma",
-    dateOfOrder: "14.05.2024.",
-    entered: "15.05.2024.",
-    comment: "komentar",
-    code: "jflgkdflgndf-ggr53453e",
-  },
-  {
-    accoordionTitle: "1874/200/1",
-    lot: "Z99877",
-    type: "efg",
-    weight: "1440,0",
-    amount: "45",
-    supplier: "treća firma",
-    dateOfOrder: "14.05.2024.",
-    entered: "15.05.2024.",
-    comment: "komentar",
-    code: "jflgkdflgndf-ggrefds",
-  },
-];
+import ItemDetails from "../components/ItemDetails";
 
 const WholesaleGoodsScreen = () => {
   const { state } = useAppContext();
   const styles = getStyles(state.isDarkThemeOn);
   const theme = useTheme();
 
-  const [filteredList, setFilteredList] = useState<Item[]>(mockItems);
+  const [filteredList, setFilteredList] = useState<Item[]>(
+    mockWholesaleGoodsItems
+  );
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const handleFilteredData = (data: Item[]) => {
@@ -64,6 +28,19 @@ const WholesaleGoodsScreen = () => {
     setExpandedId(id === expandedId ? null : id);
   };
 
+  const flatListHeader = (
+    <Card style={styles.card}>
+      <Card.Content>
+        <Filter
+          data={mockWholesaleGoodsItems}
+          onFilteredData={handleFilteredData}
+          hideFiFilter
+          hideIsRunningFilter
+        />
+      </Card.Content>
+    </Card>
+  );
+
   return (
     <SafeAreaView
       style={[
@@ -71,19 +48,10 @@ const WholesaleGoodsScreen = () => {
         { backgroundColor: theme.colors.background },
       ]}
     >
-      <Card style={[styles.card, styles.filterCard]}>
-        <Card.Content>
-          <Filter
-            data={mockItems}
-            onFilteredData={handleFilteredData}
-            hideFiFilter
-            hideIsRunningFilter
-          />
-        </Card.Content>
-      </Card>
       <FlatList
         data={filteredList}
         keyExtractor={(item) => item.code}
+        ListHeaderComponent={flatListHeader}
         renderItem={({ item }) => {
           const isExpanded = item.code === expandedId;
           return (
@@ -92,7 +60,7 @@ const WholesaleGoodsScreen = () => {
               isExpanded={isExpanded}
               onPress={() => handlePress(item.code)}
             >
-              <ListItemDetails {...item} />
+              <ItemDetails {...item} />
             </AnimatedAccordion>
           );
         }}
@@ -115,8 +83,6 @@ const getStyles = (isDarkThemeOn: boolean) =>
     },
     card: {
       backgroundColor: isDarkThemeOn ? "#3e3e3e" : "#e4e5f1",
-    },
-    filterCard: {
       marginBottom: 16,
     },
     cardText: {

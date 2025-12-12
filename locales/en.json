@@ -1,34 +1,51 @@
 {
-  "drawer": {
-    "home": "Home",
-    "wholesaleGoods": "Wholesale goods",
-    "activeGoods": "Active goods",
-    "usedGoods": "Used goods",
-    "tagSync": "TAG sync",
-    "inventoryCheck": "Inventory check"
+  "screens": {
+    "login": {
+      "usernamePlaceholder": "Username or E-mail",
+      "passwordPlaceholder": "Password",
+      "login": "Login"
+    },
+
+    "home": {
+      "welcome": "Welcome",
+      "receiving": "Receiving of goods",
+      "tagScan": "TAG scanning"
+    },
+
+    "tagSync": {
+      "title": "TAG Synchronization",
+      "buttonext": "Synchronize TAG"
+    }
   },
 
-  "login": {
-    "usernamePlaceholder": "Username or E-mail",
-    "passwordPlaceholder": "Password",
-    "login": "Login"
-  },
+  "components": {
+    "drawer": {
+      "home": "Home",
+      "wholesaleGoods": "Wholesale goods",
+      "activeGoods": "Active goods",
+      "usedGoods": "Used goods",
+      "tagSync": "TAG sync",
+      "inventoryCheck": "Inventory check"
+    },
 
-  "home": {
-    "welcome": "Welcome",
-    "receiving": "Receiving of goods",
-    "tagScan": "TAG scanning"
-  },
+    "filter": {
+      "lotPlaceholder": "LOT",
+      "typePlaceholder": "Type",
+      "supplierPlaceholder": "Supplier",
+      "fiPlaceholder": "Fi",
+      "isRunningLabel": "Only in progress"
+    },
 
-  "wholesaleGoods": {
-    "type": "Article type: ",
-    "weight": "Weight: ",
-    "amount": "Amount: ",
-    "supplier": "Supplier: ",
-    "dateOfOrder": "Date of order: ",
-    "entered": "Entered: ",
-    "comment": "Comment: ",
-    "code": "Code: "
+    "itemDetails": {
+      "type": "Article type: ",
+      "weight": "Weight: ",
+      "amount": "Amount: ",
+      "supplier": "Supplier: ",
+      "dateOfOrder": "Date of order: ",
+      "entered": "Entered: ",
+      "comment": "Comment: ",
+      "code": "Code: "
+    }
   },
 
   "common": {

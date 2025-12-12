@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import { Button, Card, Text, useTheme } from "react-native-paper";
 
-type ListItemDetailsProps = Omit<Item, "lot"> & { hideButtons?: boolean };
+type ItemDetailsProps = Omit<Item, "lot"> & { hideButtons?: boolean };
 
 type DetailRowProps = {
   label: string;
@@ -18,7 +18,7 @@ const DetailRow = ({ label, value }: DetailRowProps) => (
   </View>
 );
 
-const ListItemDetails = ({
+const ItemDetails = ({
   type,
   weight,
   amount,
@@ -28,19 +28,19 @@ const ListItemDetails = ({
   comment,
   code,
   hideButtons,
-}: ListItemDetailsProps) => {
+}: ItemDetailsProps) => {
   const theme = useTheme();
   const { t } = useTranslation();
 
   const itemDetails = [
-    { label: t("wholesaleGoods.type"), value: type },
-    { label: t("wholesaleGoods.weight"), value: weight },
-    { label: t("wholesaleGoods.amount"), value: amount },
-    { label: t("wholesaleGoods.supplier"), value: supplier },
-    { label: t("wholesaleGoods.dateOfOrder"), value: dateOfOrder },
-    { label: t("wholesaleGoods.entered"), value: entered },
-    { label: t("wholesaleGoods.comment"), value: comment },
-    { label: t("wholesaleGoods.code"), value: code },
+    { label: t("components.wholesaleGoods.type"), value: type },
+    { label: t("components.wholesaleGoods.weight"), value: weight },
+    { label: t("components.wholesaleGoods.amount"), value: amount },
+    { label: t("components.wholesaleGoods.supplier"), value: supplier },
+    { label: t("components.wholesaleGoods.dateOfOrder"), value: dateOfOrder },
+    { label: t("components.wholesaleGoods.entered"), value: entered },
+    { label: t("components.wholesaleGoods.comment"), value: comment },
+    { label: t("components.wholesaleGoods.code"), value: code },
   ];
 
   return (
@@ -91,7 +91,7 @@ const ListItemDetails = ({
   );
 };
 
-export default ListItemDetails;
+export default ItemDetails;
 
 const styles = StyleSheet.create({
   cardContent: {
