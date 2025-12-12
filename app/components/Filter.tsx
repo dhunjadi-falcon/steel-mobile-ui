@@ -1,6 +1,6 @@
-import { useAppContext } from "@/context/AppContext";
 import { Item } from "@/types";
 import React, { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Calendar } from "react-native-calendars";
 import {
@@ -40,8 +40,9 @@ const Filter = ({
   hideFiFilter,
   hideIsRunningFilter,
 }: FilterProps) => {
-  const { state } = useAppContext();
   const theme = useTheme();
+  const { t } = useTranslation();
+
   const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
   const [selectedDate, setSelectedDate] = useState("");
   const [filters, setFilters] = useState({
@@ -117,7 +118,7 @@ const Filter = ({
           outlineColor={theme.colors.outline}
           activeOutlineColor={theme.colors.outline}
           placeholderTextColor={theme.colors.onBackground}
-          placeholder="Filter by LOT"
+          placeholder={t("components.filter.lotPlaceholder")}
           value={filters.lot}
           onChangeText={(text) => handleFilterChange("lot", text)}
         />
@@ -210,7 +211,7 @@ const Filter = ({
           }}
           textColor={theme.colors.onBackground}
           placeholderTextColor={theme.colors.onBackground}
-          placeholder="Filter by Type"
+          placeholder={t("components.filter.typePlaceholder")}
           value={filters.type}
           onChangeText={(text) => handleFilterChange("type", text)}
         />
@@ -225,7 +226,7 @@ const Filter = ({
           }}
           textColor={theme.colors.onBackground}
           placeholderTextColor={theme.colors.onBackground}
-          placeholder="Filter by Supplier"
+          placeholder={t("components.filter.supplierPlaceholder")}
           value={filters.supplier}
           onChangeText={(text) => handleFilterChange("supplier", text)}
         />
@@ -241,7 +242,7 @@ const Filter = ({
           }}
           textColor={theme.colors.onBackground}
           placeholderTextColor={theme.colors.onBackground}
-          placeholder="Filter by Fi"
+          placeholder={t("components.filter.fiPlaceholder")}
           value={filters.fi}
           onChangeText={(text) => handleFilterChange("fi", text)}
         />
@@ -250,7 +251,7 @@ const Filter = ({
       {!hideIsRunningFilter && (
         <View>
           <Checkbox.Item
-            label="Samo u tijeku"
+            label={t("components.filter.isRunningLabel")}
             status={filters.isRunning ? "checked" : "unchecked"}
             onPress={() => {
               setFilters((prev) => ({ ...prev, isRunning: !prev.isRunning }));
