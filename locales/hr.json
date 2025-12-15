@@ -15,6 +15,23 @@
     "tagSync": {
       "title": "Sinkronizacija TAG-a",
       "buttonext": "Sinkroniziranje TAG-a"
+    },
+
+    "inventoryCheckItem": {
+      "weight": "Težina: ",
+      "tags": "Tagovi: "
+    },
+
+    "inventoryCheckItemDetails": {
+      "date": "Datum: ",
+      "weight": "Težina: ",
+      "amount": "Količina: ",
+      "tags": "Tagovi: ",
+      "scanned": "Skenirano",
+      "lot": "LOT: ",
+      "type": "Vrsta artikla: ",
+      "nfc": "NFC oznaka: ",
+      "left": "Preostalo"
     }
   },
 

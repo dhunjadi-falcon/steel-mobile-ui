@@ -15,6 +15,23 @@
     "tagSync": {
       "title": "TAG Synchronization",
       "buttonext": "Synchronize TAG"
+    },
+
+    "inventoryCheckItem": {
+      "weight": "Weight: ",
+      "tags": "Tags: "
+    },
+
+    "inventoryCheckItemDetails": {
+      "date": "Date: ",
+      "weight": "Weight: ",
+      "amount": "Amount: ",
+      "tags": "Tags: ",
+      "scanned": "Scanned",
+      "lot": "LOT",
+      "type": "Item type",
+      "nfc": "NFC tag: ",
+      "left": "Left"
     }
   },
 

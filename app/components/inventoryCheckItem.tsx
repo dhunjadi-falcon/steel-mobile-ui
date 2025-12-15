@@ -1,10 +1,12 @@
 import { useRouter } from "expo-router";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Icon, Text, useTheme } from "react-native-paper";
 
-const InventoryCheckItem = () => {
+const InventoryCheckItemScreen = () => {
   const theme = useTheme();
+  const { t } = useTranslation();
   const router = useRouter();
 
   return (
@@ -38,12 +40,16 @@ const InventoryCheckItem = () => {
           </View>
 
           <View style={styles.details}>
-            <Text variant="titleMedium">Težina</Text>
+            <Text variant="titleMedium">
+              {t("screens.inventoryCheckItem.weight")}
+            </Text>
             <Text variant="bodyMedium">2160,0 kg / 670989,0956 kg</Text>
           </View>
 
           <View style={styles.details}>
-            <Text variant="titleMedium">Tagovi</Text>
+            <Text variant="titleMedium">
+              {t("screens.inventoryCheckItem.tags")}
+            </Text>
             <Text variant="bodyMedium">1 / 278</Text>
           </View>
         </View>
@@ -52,7 +58,7 @@ const InventoryCheckItem = () => {
   );
 };
 
-export default InventoryCheckItem;
+export default InventoryCheckItemScreen;
 
 const styles = StyleSheet.create({
   cardContainer: {
