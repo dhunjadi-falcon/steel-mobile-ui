@@ -92,6 +92,14 @@ export default function ProtectedLayout() {
             drawerItemStyle: { height: 0, overflow: "hidden" },
           }}
         />
+
+        <Drawer.Screen
+          name="inventoryCheckItemDetails"
+          options={{
+            headerShown: false,
+            drawerItemStyle: { height: 0, overflow: "hidden" },
+          }}
+        />
       </Drawer>
     </GestureHandlerRootView>
   );
